@@ -6,6 +6,7 @@ import { FormControl, Validators, FormGroup, FormBuilder, AbstractControl } from
   templateUrl: './basic-form.component.html',
   styleUrls: ['./basic-form.component.scss']
 })
+
 export class BasicFormComponent implements OnInit {
 
   form: FormGroup;
