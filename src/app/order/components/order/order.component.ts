@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
@@ -14,11 +14,11 @@ import { CartService } from './../../../core/services/cart.service';
 export class OrderComponent implements OnInit {
 
   products$: Observable<Product[]>;
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(
     private cartService: CartService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     this.products$ = this.cartService.cart$;
     this.buildForm();
@@ -46,7 +46,7 @@ export class OrderComponent implements OnInit {
   }
 
   get addressField() {
-    return this.form.get('address') as FormArray;
+    return this.form.get('address') as UntypedFormArray;
   }
 
   save() {

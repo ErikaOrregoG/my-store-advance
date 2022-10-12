@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -16,7 +16,7 @@ import { CategoriesService } from './../../../../core/services/categories.servic
 })
 export class CategoryFormComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   image$: Observable<string>;
   isNew = true;
 
@@ -31,7 +31,7 @@ export class CategoryFormComponent implements OnInit {
   @Output() update = new EventEmitter();
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private storage: AngularFireStorage,
     private categoriesService: CategoriesService,
   ) {

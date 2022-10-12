@@ -1,13 +1,13 @@
 <form [formGroup]="form" (ngSubmit)="save($event)">
   <div formGroupName="fullName">
     <mat-form-field appearance="fill">
-      <mat-label>Name: {{ nameField.value }}</mat-label>
+      <mat-label>Name</mat-label>
       <input matInput type="text" formControlName="name">
       <mat-icon matSuffix *ngIf="isNameFieldValid">done</mat-icon>
       <mat-icon matSuffix *ngIf="isNameFieldInvalid">close</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Lasname: {{ lastField.value }}</mat-label>
+      <mat-label>Lastname</mat-label>
       <input matInput type="text" formControlName="last">
       <mat-icon matSuffix *ngIf="isLastnameFieldValid">done</mat-icon>
       <mat-icon matSuffix *ngIf="isLastnameFieldInvalid">close</mat-icon>
@@ -27,60 +27,46 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+    <input type="email" matInput formControlName="email">
     <mat-icon matSuffix *ngIf="isEmailFieldValid">done</mat-icon>
     <mat-icon matSuffix *ngIf="isEmailFieldInvalid">close</mat-icon>
-
-    <div class="messages" [class.active]="emailField.touched">
-      <mat-error *ngIf="emailField.hasError('email') && !emailField.hasError('required')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="emailField.hasError('required')">
-        Email is <strong>required</strong>
-      </mat-error>
-    </div>
   </mat-form-field>
 
-  <div class="messages" [class.active]="emailField.touched && phoneField.invalid">
-    <p>
-      <strong *ngIf="emailField.hasError('required')">
-        Este campo es requerido
-      </strong>
-    </p>
-    <p>
-      <strong *ngIf="emailField.hasError('email')">
-        Esto no es un emial valido
-      </strong>
-    </p>
+  <div class="messages" [class.active]="emailField.touched">
+    <mat-error *ngIf="emailField.hasError('email') && !emailField.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailField.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
   </div>
 
-  <p>
-    Age: {{ ageField.value }}
-    <input type="number" formControlName="age" />
-  </p>
-
-  <div class="messages" [class.active]="ageField.touched && ageField.invalid">
-    <p>
-      <strong *ngIf="ageField.hasError('required')">Este campo es requerido</strong>
-    </p>
-    <p>
-      <strong *ngIf="ageField.hasError('min')">Debe ser mayor de edad</strong>
-    </p>
-    <p>
-      <strong *ngIf="ageField.hasError('max')">Debe ser menor de 100 años</strong>
-    </p>
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input matInput type="number" formControlName="age">
+    <mat-icon matSuffix *ngIf="isAgeFieldValid">done</mat-icon>
+    <mat-icon matSuffix *ngIf="isAgeFieldInvalid">close</mat-icon>
+  </mat-form-field>
+  <div class="messages" [class.active]="ageField.touched">
+    <mat-error *ngIf="ageField.hasError('min') || ageField.hasError('max')">
+      Please enter a number beetween 18 and 100
+    </mat-error>
+    <mat-error *ngIf="ageField.hasError('required')">
+      Age is <strong>required</strong>
+    </mat-error>
   </div>
 
-
-  <p>
-    Phone: {{ phoneField.value }}
-    <input type="tel" formControlName="phone" />
-  </p>
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input matInput type="tel" formControlName="phone">
+    <mat-icon matSuffix *ngIf="isAgeFieldValid">done</mat-icon>
+    <mat-icon matSuffix *ngIf="isAgeFieldInvalid">close</mat-icon>
+  </mat-form-field>
 
   <div class="messages" [class.active]="phoneField.touched && phoneField.invalid">
-    <p>
-      <strong *ngIf="phoneField.touched && phoneField.hasError('required')">Este campo es requerido</strong>
-    </p>
+    <mat-error *ngIf="phoneField.touched && phoneField.hasError('required')">
+      Phone is <strong>required</strong>
+    </mat-error>
   </div>
 
   <p>

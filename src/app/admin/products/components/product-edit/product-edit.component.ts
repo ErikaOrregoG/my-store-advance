@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { MyValidators } from './../../../../utils/validators';
@@ -14,7 +14,7 @@ import { Category } from './../../../../core/models/category.model';
 })
 export class ProductEditComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   id: string;
   categories: Category[] = [];
   states = [
@@ -26,7 +26,7 @@ export class ProductEditComponent implements OnInit {
   ];
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private router: Router,

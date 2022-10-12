@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormControl, Validators, UntypedFormGroup, UntypedFormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-basic-form',
@@ -9,10 +9,10 @@ import { FormControl, Validators, FormGroup, FormBuilder, AbstractControl } from
 
 export class BasicFormComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     this.buildForm();
   }
@@ -89,6 +89,22 @@ export class BasicFormComponent implements OnInit {
 
   get isEmailFieldValid() {
     return this.emailField.touched && this.emailField.valid;
+  }
+
+  get isAgeFieldInvalid() {
+    return this.ageField.touched && this.ageField.invalid;
+  }
+
+  get isAgeFieldValid() {
+    return this.ageField.touched && this.ageField.valid;
+  }
+
+  get isPhoneFieldValid() {
+    return this.phoneField.touched && this.phoneField.valid;
+  }
+
+  get isPhoneFieldInalid() {
+    return this.phoneField.touched && this.phoneField.invalid;
   }
 
   get emailField() {
